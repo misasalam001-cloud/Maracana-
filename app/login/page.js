@@ -1,14 +1,28 @@
 "use client";
 
 import { useState } from "react";
+import { supabase } from "../../lib/supabase";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
 
-  function handleLogin(e) {
+  async function handleLogin(e) {
     e.preventDefault();
-    alert("Login hazırlanır...");
+    setMessage("Giriş edilir...");
+
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+
+    if (error) {
+      setMessage("Xəta: " + error.message);
+      return;
+    }
+
+    setMessage("Giriş uğurludur! ✅");
   }
 
   return (
@@ -40,11 +54,9 @@ export default function Login() {
         <button type="submit">Giriş yap</button>
       </form>
 
-      <br />
+      <p>{message}</p>
 
-      <a href="/register">
-        Hesabın yoxdur? Qeydiyyatdan keç
-      </a>
+      <a href="/kayıt">Hesabın yoxdur? Qeydiyyatdan keç</a>
     </main>
   );
 }

@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { supabase } from "../../lib/supabase";
+import Link from "next/link";
+import { supabase } from "../../../lib/supabase";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -39,7 +40,8 @@ export default function Login() {
           required
         />
 
-        <br /><br />
+        <br />
+        <br />
 
         <input
           type="password"
@@ -49,14 +51,17 @@ export default function Login() {
           required
         />
 
-        <br /><br />
+        <br />
+        <br />
 
         <button type="submit">Giriş yap</button>
       </form>
 
       <p>{message}</p>
 
-      <a href="/kayıt">Hesabın yoxdur? Qeydiyyatdan keç</a>
+      <Link href="/register">
+        Hesabın yoxdur? Qeydiyyatdan keç
+      </Link>
     </main>
   );
 }

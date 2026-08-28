@@ -44,6 +44,7 @@ export default function Register() {
           onChange={(e) => setName(e.target.value)}
           required
         />
+
         <br /><br />
 
         <input
@@ -53,6 +54,7 @@ export default function Register() {
           onChange={(e) => setPhone(e.target.value)}
           required
         />
+
         <br /><br />
 
         <input
@@ -62,6 +64,7 @@ export default function Register() {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
+
         <br /><br />
 
         <input
@@ -72,6 +75,7 @@ export default function Register() {
           minLength={6}
           required
         />
+
         <br /><br />
 
         <button type="submit">Qeydiyyatdan keç</button>

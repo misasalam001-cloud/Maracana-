@@ -1,17 +1,36 @@
 "use client";
 
 import { useState } from "react";
+import { supabase } from "../../lib/supabase";
 
 export default function Register() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
 
-  function handleRegister(e) {
+  async function handleRegister(e) {
     e.preventDefault();
+    setMessage("Qeydiyyat edilir...");
 
-    alert("Qeydiyyat sistemi hazırlanır...");
+    const { error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: {
+          name,
+          phone,
+        },
+      },
+    });
+
+    if (error) {
+      setMessage("Xəta: " + error.message);
+      return;
+    }
+
+    setMessage("Qeydiyyat uğurludur! Emailini yoxla. ✅");
   }
 
   return (
@@ -22,7 +41,7 @@ export default function Register() {
       <form onSubmit={handleRegister}>
         <input
           type="text"
-          placeholder="Adınız"
+          placeholder="Ad"
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
@@ -64,9 +83,9 @@ export default function Register() {
         <button type="submit">Qeydiyyatdan keç</button>
       </form>
 
-      <br />
+      <p>{message}</p>
 
-      <a href="/login">Artıq hesabın var? Daxil ol</a>
+      <a href="/Giriş yap">Artıq hesabın var? Giriş et</a>
     </main>
   );
-    }
+}

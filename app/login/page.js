@@ -8,14 +8,13 @@ export default function Login() {
 
   function handleLogin(e) {
     e.preventDefault();
-
-    alert("Login sistemi hazırlanır...");
+    alert("Login hazırlanır...");
   }
 
   return (
     <main>
       <h1>Maracana</h1>
-      <h2>Daxil ol</h2>
+      <h2>Giriş yap</h2>
 
       <form onSubmit={handleLogin}>
         <input
@@ -38,12 +37,14 @@ export default function Login() {
 
         <br /><br />
 
-        <button type="submit">Daxil ol</button>
+        <button type="submit">Giriş yap</button>
       </form>
 
       <br />
 
-      <a href="/register">Hesabın yoxdur? Qeydiyyatdan keç</a>
+      <a href="/register">
+        Hesabın yoxdur? Qeydiyyatdan keç
+      </a>
     </main>
   );
 }

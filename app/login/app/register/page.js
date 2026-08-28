@@ -19,10 +19,7 @@ export default function Register() {
       email,
       password,
       options: {
-        data: {
-          name,
-          phone,
-        },
+        data: { name, phone },
       },
     });
 
@@ -47,9 +44,7 @@ export default function Register() {
           onChange={(e) => setName(e.target.value)}
           required
         />
-
-        <br />
-        <br />
+        <br /><br />
 
         <input
           type="tel"
@@ -58,9 +53,7 @@ export default function Register() {
           onChange={(e) => setPhone(e.target.value)}
           required
         />
-
-        <br />
-        <br />
+        <br /><br />
 
         <input
           type="email"
@@ -69,9 +62,7 @@ export default function Register() {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-
-        <br />
-        <br />
+        <br /><br />
 
         <input
           type="password"
@@ -81,18 +72,14 @@ export default function Register() {
           minLength={6}
           required
         />
-
-        <br />
-        <br />
+        <br /><br />
 
         <button type="submit">Qeydiyyatdan keç</button>
       </form>
 
       <p>{message}</p>
 
-      <Link href="/login">
-        Artıq hesabın var? Giriş et
-      </Link>
+      <Link href="/login">Artıq hesabın var? Giriş et</Link>
     </main>
   );
 }

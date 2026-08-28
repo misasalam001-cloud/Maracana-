@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { supabase } from "../../lib/supabase";
+import Link from "next/link";
+import { supabase } from "../../../lib/supabase";
 
 export default function Register() {
   const [name, setName] = useState("");
@@ -47,7 +48,8 @@ export default function Register() {
           required
         />
 
-        <br /><br />
+        <br />
+        <br />
 
         <input
           type="tel"
@@ -57,7 +59,8 @@ export default function Register() {
           required
         />
 
-        <br /><br />
+        <br />
+        <br />
 
         <input
           type="email"
@@ -67,7 +70,8 @@ export default function Register() {
           required
         />
 
-        <br /><br />
+        <br />
+        <br />
 
         <input
           type="password"
@@ -78,14 +82,17 @@ export default function Register() {
           required
         />
 
-        <br /><br />
+        <br />
+        <br />
 
         <button type="submit">Qeydiyyatdan keç</button>
       </form>
 
       <p>{message}</p>
 
-      <a href="/Giriş yap">Artıq hesabın var? Giriş et</a>
+      <Link href="/login">
+        Artıq hesabın var? Giriş et
+      </Link>
     </main>
   );
 }

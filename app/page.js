@@ -1,62 +1,17 @@
-"use client";
+import Link from "next/link";
 
-import { useState } from "react";
-import { supabase } from "../../lib/supabase";
-
-export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
-
-  async function handleLogin(e) {
-    e.preventDefault();
-    setMessage("Giriş edilir...");
-
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-
-    if (error) {
-      setMessage("Xəta: " + error.message);
-      return;
-    }
-
-    setMessage("Giriş uğurludur! ✅");
-  }
-
+export default function Home() {
   return (
     <main>
       <h1>Maracana</h1>
-      <h2>Giriş yap</h2>
+      <p>Rəqəmsal biznes platforması</p>
 
-      <form onSubmit={handleLogin}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-
-        <br /><br />
-
-        <input
-          type="password"
-          placeholder="Şifrə"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-
-        <br /><br />
-
-        <button type="submit">Giriş yap</button>
-      </form>
-
-      <p>{message}</p>
-
-      <a href="/register">Hesabın yoxdur? Qeydiyyatdan keç</a>
+      <div>
+        <Link href="/login">Giriş et</Link>
+        <br />
+        <br />
+        <Link href="/register">Qeydiyyatdan keç</Link>
+      </div>
     </main>
   );
-}
+    }
